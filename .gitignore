@@ -1,0 +1,9 @@
+# Protect root .env
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+node_modules/
+dist/
+docker-compose.override.yml

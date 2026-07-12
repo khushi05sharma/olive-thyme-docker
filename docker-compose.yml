@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # FRONTEND SERVICE (React + Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL}
+        VITE_SPOONACULAR_KEY: ${VITE_SPOONACULAR_KEY}
+
+    container_name: olive-frontend
+
+    ports:
+      - "5173:80"
+    
+    # Restart policy: automatically restart unless manually stopped
+    restart: unless-stopped
+
+    # Frontend needs backend to be ready first
+    depends_on:
+      - backend
+
+  # BACKEND SERVICE (Express + Node.js)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: olive-backend
+
+    ports:
+      - "5000:5000"
+    
+    restart: unless-stopped
+
+    # Inject environment variables from root .env
+    env_file:
+      - .env
+
+    # Override specific env vars (optional)
+    # Useful if you want different values for docker vs local dev
+    environment:
+      PORT: 5000
