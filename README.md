@@ -165,8 +165,7 @@ docker compose logs
 
 This Docker Compose setup coordinates these three repositories:
 
-- **Frontend:** https://github.com/khushi05sharma/olive-and-thyme-frontend
-- **Backend:** https://github.com/khushi05sharma/olive-and-thyme-backend
-- **Docker Orchestration:** https://github.com/khushi05sharma/olive-thyme-docker (this repo)
-
+- **Frontend:** [olive-and-thyme-frontend](https://github.com/khushi05sharma/olive-and-thyme-frontend)
+- **Backend:** [olive-and-thyme-backend](https://github.com/khushi05sharma/olive-and-thyme-backend)
+- **Docker:** [olive-thyme-docker](https://github.com/khushi05sharma/olive-thyme-docker) (this repo)
 Each application repo contains its own Dockerfile for independent deployment.
